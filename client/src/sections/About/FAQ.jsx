@@ -10,7 +10,7 @@ export default function FAQ() {
   const faqs = [
     {
       id: 1,
-      question: "How accurate are FlowTrack's predictions?",
+      question: "How accurate are Celestia's predictions?",
       answer:
         "Our algorithm achieves 90% accuracy after 3 logged cycles by combining your inputs with peer-reviewed medical patterns. Always consult a healthcare provider for medical decisions.",
     },
@@ -28,7 +28,7 @@ export default function FAQ() {
     },
     {
       id: 4,
-      question: "How does FlowTrack differ from other apps?",
+      question: "How does Celestia differ from other apps?",
       answer:
         "Three key ways: 1) No ads or data mining, 2) Medical-advisor-reviewed algorithms, 3) Inclusive design for all genders and cycle types.",
     },

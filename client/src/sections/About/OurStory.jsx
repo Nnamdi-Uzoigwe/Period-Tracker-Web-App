@@ -8,7 +8,7 @@ export default function OurStory() {
       <div className="max-w-3xl mx-auto px-6 py-8 bg-white/90 rounded-xl shadow-sm border border-pink-100">
         <p className="text-gray-700 text-lg leading-relaxed tracking-normal">
           <span className="block text-2xl font-serif text-purple-800 italic mb-4">
-            FlowTrack began in 2025 as a{" "}
+            Celestia began in 2025 as a{" "}
             <span className="font-bold underline decoration-purple-300">
               final-year computer science project
             </span>
