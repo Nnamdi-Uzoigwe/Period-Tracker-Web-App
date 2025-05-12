@@ -1,5 +1,10 @@
 export default function PeriodLogging() {
     return (
-        <div>PeriodLogging Page</div>
+        <div>
+            <h1 className="h-[100vh]">hi</h1>
+            <p>
+            PeriodLogging Page
+            </p>
+        </div>
     )
 }

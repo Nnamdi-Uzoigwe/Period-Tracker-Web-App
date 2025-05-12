@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Router, Routes, Route, useLocation } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import About from './pages/About'
 import Contact from './pages/Contact'
@@ -13,29 +13,48 @@ import PageNotFound from './pages/PageNotFound'
 import Navbar from './components/Navbar'
 import './App.css'
 import Footer from './components/Footer'
-
 function App() {
+  const location = useLocation()
+
+  const noFooterRoutes = ['/signin', '/register', '/dashboard'];
+
   return (
-    <Router>
     <div>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/period-log" element={<PeriodLogging />} />
-        <Route path="/log-history" element={<LogHistory />} />
-        <Route path="/log/:id" element={<LogDetails />} />
-        <Route path="/*" element={<PageNotFound />} />
-      </Routes>
+            {location.pathname !== '/dashboard' 
+              && location.pathname !== '/signin' 
+              && location.pathname !== '/register' &&
+              
+              <Navbar />
+            }
+
+
+      <div>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/period-log" element={<PeriodLogging />} />
+          <Route path="/log-history" element={<LogHistory />} />
+          <Route path="/log/:id" element={<LogDetails />} />
+          <Route path="/*" element={<PageNotFound />} />
+        </Routes>
+      </div>
+      {!noFooterRoutes.includes(location.pathname) && <Footer />}
     </div>
-      <Footer />
-    </Router>
   )
 }
 
-export default App
+function AppWrapper() {
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+}
+
+
+export default AppWrapper
