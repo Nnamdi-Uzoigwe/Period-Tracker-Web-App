@@ -8,6 +8,7 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { IoFlowerSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -59,12 +60,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="text-gray-400 hover:text-white transition"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
                 <a
