@@ -22,10 +22,10 @@ export default function Register() {
                         <input type="password" placeholder="Enter your email..." className="border-[2px] border-gray-400 rounded w-[400px] p-3" />
                     </div>
 
-                    <input type="submit" value="Register" className="bg-[#ff6c61] px-4 py-3 mt-2 cursor-pointer text-md w-full hover:bg-[#ff7361ec] rounded text-white" />
+                    <input type="submit" value="Register" className="bg-purple-500 px-4 py-3 mt-2 cursor-pointer text-md w-full hover:bg-purple-600 rounded text-white" />
                 </form>
 
-                <p className="mt-10">Already have an account? <Link to="/signin" className="text-[#f74c40]">Login here</Link></p>
+                <p className="mt-10">Already have an account? <Link to="/signin" className="text-purple-600">Login here</Link></p>
             </div>
         </div>
     )

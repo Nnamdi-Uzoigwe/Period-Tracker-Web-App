@@ -7,9 +7,9 @@ export default function OurStory() {
     
       <div className="max-w-3xl mx-auto px-6 py-8 bg-white/90 rounded-xl shadow-sm border border-pink-100">
         <p className="text-gray-700 text-lg leading-relaxed tracking-normal">
-          <span className="block text-2xl font-serif text-pink-500 italic mb-4">
+          <span className="block text-2xl font-serif text-purple-800 italic mb-4">
             FlowTrack began in 2025 as a{" "}
-            <span className="font-bold underline decoration-pink-300">
+            <span className="font-bold underline decoration-purple-300">
               final-year computer science project
             </span>
             —one that grew from late-night coding sessions into a mission to
@@ -18,7 +18,7 @@ export default function OurStory() {
           Our founder, <span className="font-semibold text-gray-800">Alex</span>,
           was tired of juggling clunky period trackers while surviving
           university life. Between exams and erratic cycles, existing apps felt{" "}
-          <span className="bg-pink-50 px-1 rounded">
+          <span className="bg-purple-100 px-1 rounded">
             invasive, ad-ridden, or just plain inaccurate
           </span>
           . So when their professor challenged the class to{" "}
@@ -26,18 +26,18 @@ export default function OurStory() {
             "build something that solves a real problem,"
           </span>{" "}
           Alex knew exactly what to create:{" "}
-          <span className="font-medium text-pink-600">
+          <span className="font-medium text-purple-600">
             a privacy-first period tracker
           </span>{" "}
           that actually worked.
-          <span className="my-4 block border-l-4 border-pink-300 pl-4 text-gray-600">
+          <span className="my-4 block border-l-4 border-purple-300 pl-4 text-gray-600">
             What started as a dorm-room prototype caught fire. With feedback
             from classmates (and a lot of beta-testing pizza), Alex teamed up
             with <span className="font-semibold">Dr. Maya Chen</span>, a campus
             health advisor, to refine the algorithm.
           </span>
           Today, what began as an undergrad project helps{" "}
-          <span className="text-pink-500 font-bold">1,000+ users</span> track
+          <span className="text-purple-800 font-bold">1,000+ users</span> track
           their cycles without ads, data mining, or guesswork. We're proof that
           student ideas can grow—
           <span className="italic">one period prediction at a time.</span>

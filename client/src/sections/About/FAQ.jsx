@@ -43,7 +43,7 @@ export default function FAQ() {
         {faqs.map((faq) => (
           <div
             key={faq.id}
-            className="border  border-gray-200 rounded-xl overflow-hidden hover:border-pink-200 transition-colors"
+            className="border  border-gray-200 rounded-xl overflow-hidden hover:border-purple-200 transition-colors"
           >
             <button
               onClick={() => toggleFaq(faq.id)}
@@ -53,7 +53,7 @@ export default function FAQ() {
                 {faq.question}
               </h3>
               <svg
-                className={`w-5 h-5 text-pink-500 transform transition-transform ${
+                className={`w-5 h-5 text-purple-500 transform transition-transform ${
                   openFaq === faq.id ? "rotate-180" : ""
                 }`}
                 fill="none"

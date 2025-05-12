@@ -37,7 +37,7 @@ export default function KeyFeatures() {
                 {featuresArray.map((item) => (
                     <div className="bg-gray-200 flex flex-col p-4 items-center justify-center h-[300px] w-[300px] clip-hexagon">
                         <div>{item.iconName}</div>
-                        <h3 className="text-xl text-[#f95875] font-medium my-2">{item.caption}</h3>
+                        <h3 className="text-xl text-[#6835ba] font-medium my-2">{item.caption}</h3>
                         <p className="text-center text-sm text-gray-600 mb-4 w-[60%] font-semibold">
                             {item.description}
                         </p>

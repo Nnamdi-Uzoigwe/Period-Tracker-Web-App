@@ -18,10 +18,10 @@ export default function Signin() {
                         <input type="password" placeholder="Enter your email..." className="border-[2px] border-gray-400 rounded w-[400px] p-3" />
                     </div>
 
-                    <input type="submit" value="Login" className="mt-3 bg-[#ff6c61] px-4 py-3 cursor-pointer text-md w-full hover:bg-[#ff7361ec] rounded text-white" />
+                    <input type="submit" value="Login" className="mt-3 bg-purple-500 px-4 py-3 cursor-pointer text-md w-full hover:bg-purple-600 rounded text-white" />
                 </form>
 
-                <p className="mt-10">Don't have an account? <Link to="/register" className="text-[#f74c40]">Create an account here</Link></p>
+                <p className="mt-10">Don't have an account? <Link to="/register" className="text-purple-600">Create an account here</Link></p>
             </div>
         </div>
     )

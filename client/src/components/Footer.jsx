@@ -20,8 +20,8 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex flex-col ">
               <div className="logo flex gap-[4px] text-2xl items-center">
-                <IoFlowerSharp className="text-[#ff6c61]" />
-                <span className="font-semibold text-gray-200">FlowTrack</span>
+                <IoFlowerSharp className="text-purple-500" />
+                <span className="font-semibold text-gray-200">Celestia</span>
               </div>
             </div>
             <p className="text-gray-400">
@@ -161,7 +161,7 @@ export default function Footer() {
                   href="mailto:help@scamalert.com"
                   className="text-gray-400 hover:text-white transition"
                 >
-                  help@flowtrackapp.com
+                  help@celestiaapp.com
                 </a>
               </li>
             </ul>
@@ -171,7 +171,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} FlowTrack. All rights reserved.
+            © {new Date().getFullYear()} Celestia. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a
