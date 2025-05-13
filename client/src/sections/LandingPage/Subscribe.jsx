@@ -2,7 +2,7 @@ import Button from "../../components/Button";
 
 export default function Subscribe() {
     return (
-        <div className="px-8 lg:px-40 py-20 bg-gray-200">
+        <div className="px-8 lg:px-40 py-20 bg-gray-100">
             <div className="flex flex-col lg:flex-row text-gray-700 justify-between items-center">
                 <div className="text-left mb-4 lg:mb-0">
                     <h4 className="text-xl font-semibold mb-2">Stay Updated</h4>

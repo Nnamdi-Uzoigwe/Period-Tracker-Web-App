@@ -28,7 +28,6 @@ export default function FAQ() {
     },
     {
       id: 4,
-      question: "How does Celestia differ from other apps?",
       answer:
         "Three key ways: 1) No ads or data mining, 2) Medical-advisor-reviewed algorithms, 3) Inclusive design for all genders and cycle types.",
     },

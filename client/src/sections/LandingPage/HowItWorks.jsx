@@ -30,7 +30,7 @@ export default function HowItWorks() {
     ]
 
     return (
-        <div className="bg-gray-300 px-8 lg:px-40 py-20">
+        <div className="bg-gray-100 px-8 lg:px-40 py-20">
             <h2 className="text-[30px] font-semibold mb-10 text-gray-700 underline">How it works</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 {worksArray.map((item) => (
