@@ -7,10 +7,25 @@ const cycleRoutes = require("./routes/cycleRoutes")
 const predictionRoutes = require("./routes/predictionRoutes") 
 const mongoose = require("mongoose")
 
-const PORT = process.env.PORT
 
 const app = express()
-app.use(cors())
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://celestia-web-app.vercel.app'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
+
 app.use(helmet())
 app.use(express.json())
 
