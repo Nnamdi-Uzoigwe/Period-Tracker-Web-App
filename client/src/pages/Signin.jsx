@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Spinner from "../components/Spinner";
 
 export default function Signin() {
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: "",
@@ -18,6 +20,7 @@ export default function Signin() {
   };
 
   const handleLogin = async (e) => {
+    setLoading(true)
     e.preventDefault()
 
     try {
@@ -46,6 +49,8 @@ export default function Signin() {
       }
     } catch (err) {
       console.error("Login error:", err);
+    } finally {
+        setLoading(false)
     }
   };
 
@@ -80,12 +85,12 @@ export default function Signin() {
             />
           </div>
 
-          <input
-            type="submit"
-            value="Login"
-            className="mt-3 bg-purple-500 px-4 py-3 cursor-pointer text-md w-full hover:bg-purple-600 rounded text-white"
-            onClick={handleLogin}
-          />
+          <button
+            className="mt-3 bg-purple-500 px-4 py-3 cursor-pointer text-md flex items-center justify-center w-full hover:bg-purple-600 rounded text-white"
+            onClick={handleLogin} 
+          >
+                {loading ? <span className="flex gap-2">Logging in<Spinner /></span> : <span>Login</span>}
+          </button>
         </form>
 
         <p className="mt-10">

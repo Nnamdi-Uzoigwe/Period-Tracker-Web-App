@@ -2,9 +2,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Spinner from "../components/Spinner";
 
 export default function Register() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,6 +22,7 @@ export default function Register() {
   };
 
   const handleRegister = async (e) => {
+    setLoading(true)
     e.preventDefault();
 
     try {
@@ -52,6 +55,8 @@ export default function Register() {
         position: "top-center",
         autoClose: 2000,
       })
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -104,9 +109,10 @@ export default function Register() {
 
           <button
             type="submit"
-            className="bg-purple-500 px-4 py-3 mt-2 cursor-pointer text-md w-full hover:bg-purple-600 rounded text-white"
+            className="bg-purple-500 px-4 py-3 mt-2 cursor-pointer flex items-center justify-center text-md w-full hover:bg-purple-600 rounded text-white"
           >
-            Register
+            {loading ? <Spinner /> : <span>Register</span>}
+
           </button>
         </form>
 
