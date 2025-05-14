@@ -24,13 +24,8 @@ export default function FAQ() {
       id: 3,
       question: "Can I track symptoms beyond periods?",
       answer:
-        "Yes! Log 20+ symptoms like cramps, mood swings, and sleep patterns. Custom tags are also available.",
-    },
-    {
-      id: 4,
-      answer:
-        "Three key ways: 1) No ads or data mining, 2) Medical-advisor-reviewed algorithms, 3) Inclusive design for all genders and cycle types.",
-    },
+        "Yes! Log 10+ symptoms like cramps, mood swings, and sleep patterns. Custom tags are also available.",
+    }
   ];
 
   return (

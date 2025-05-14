@@ -1,6 +1,6 @@
 export default function AboutHero() {
     return (
-        <div className=" mt-24">
+        <div className=" mt-16 lg:mt-24">
             <header className="relative h-screen flex items-center justify-center text-white">
                 
                 <div className="absolute inset-0">
