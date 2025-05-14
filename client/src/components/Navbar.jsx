@@ -44,7 +44,7 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden absolute top-[80px] left-0 right-0 bg-white shadow-lg py-4 px-6 z-50">
+        <div className="md:hidden absolute top-[60px] left-0 right-0 bg-white shadow-lg py-4 px-6 z-50">
           <div className="flex flex-col space-y-4">
             <Link
               to="/"
