@@ -13,6 +13,7 @@ import PageNotFound from './pages/PageNotFound'
 import Navbar from './components/Navbar'
 import './App.css'
 import Footer from './components/Footer'
+import { ToastContainer } from "react-toastify"
 function App() {
   const location = useLocation()
 
@@ -52,6 +53,7 @@ function AppWrapper() {
   return (
     <BrowserRouter>
       <App />
+      <ToastContainer />
     </BrowserRouter>
   );
 }

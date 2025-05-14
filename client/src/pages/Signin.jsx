@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Signin() {
   const navigate = useNavigate()
@@ -16,25 +17,32 @@ export default function Signin() {
     }));
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
     e.preventDefault()
 
     try {
       const response = await fetch("https://period-tracker-web-app.onrender.com/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         sessionStorage.setItem("token", data.token); 
+        toast.success("Login Successful!", {
+            position: "top-center",
+            autoClose: 2000,
+        })
         setTimeout(() => {
             navigate("/dashboard")
         }, 3000)
       } else {
-        alert(data.message);
+        toast.error("Incorrect name or password",{
+            position: "top-center",
+            autoClose: 2000,
+        })
       }
     } catch (err) {
       console.error("Login error:", err);
@@ -76,7 +84,7 @@ export default function Signin() {
             type="submit"
             value="Login"
             className="mt-3 bg-purple-500 px-4 py-3 cursor-pointer text-md w-full hover:bg-purple-600 rounded text-white"
-            onClick={() => handleLogin}
+            onClick={handleLogin}
           />
         </form>
 
