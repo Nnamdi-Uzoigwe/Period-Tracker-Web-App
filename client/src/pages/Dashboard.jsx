@@ -8,7 +8,8 @@ export default function Dashboard() {
                 <Sidebar />
             </div>
 
-            <div className="right mt-20 ml-0 lg:ml-[300px] flex justify-center">
+            <div className="right mt-20 ml-0 lg:ml-[300px] flex flex-col justify-center">
+                <h1 className=" text-2xl font-semibold mt-0 ml-5 lg:ml-[320px] text-purple-700">Welcome to Celestia, XXX!</h1>
                 <PeriodLogging />
             </div>
         </div>

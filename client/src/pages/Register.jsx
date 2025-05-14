@@ -1,32 +1,217 @@
-import { Link } from "react-router-dom"
+// import { useState } from "react";
+// import { Link, useNavigate } from "react-router-dom";
+
+// export default function Register() {
+//   const navigate = useNavigate()
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     email: "",
+//     password: "",
+//   });
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData(prev => ({
+//       ...prev,
+//       [name]: value
+//     }));
+//   };
+
+//   const handleRegister = async (e) => {
+//     e.preventDefault() 
+
+//     try {
+//         const response = await fetch("http://localhost:7000/api/auth/register", {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify(formData)
+//         });
+
+//         const data = await response.json()
+
+//         if (response.ok) {
+//         console.log("Registration successful:", data.user);
+//         setTimeout(() => {
+//             navigate("/signin")
+//         }, 3000)
+//       } else {
+//         console.log(data.message);
+//       }
+//     } catch (error) {
+//      console.error("Login error:", error);   
+//     }
+//   }
+
+//   return (
+//     <div className="grid grid-cols-1 lg:grid-cols-2">
+//       <img src="/login.png" alt="" className="hidden lg:block" />
+
+//       <div className="flex flex-col h-screen p-4 items-center justify-center border-l-2 border-gray-300">
+//         <h4 className="text-gray-600 text-3xl font-semibold mb-10">
+//           Create an Account
+//         </h4>
+
+//         <form onSubmit={handleRegister}>
+//           <div>
+//             <p className="text-lg font-medium mb-2">Your Name</p>
+//             <input
+//               type="text"
+//               name="name"
+//               value={formData.username}
+//               placeholder="Enter your name..."
+//               className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3"
+//               onChange={handleChange}
+//             />
+//           </div>
+//           <div className="my-4">
+//             <p className="text-lg font-medium mb-2">Your Email</p>
+//             <input
+//               type="text"
+//               name="email"
+//               value={formData.email}
+//               placeholder="Enter your name..."
+//               className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3"
+//               onChange={handleChange}
+//             />
+//           </div>
+//           <div className="mb-6">
+//             <p className="text-lg font-medium mb-2">Your Password</p>
+//             <input
+//               type="password"
+//               name="password"
+//               value={formData.password}
+//               placeholder="Enter your email..."
+//               className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3"
+//               onChange={handleChange}
+//             />
+//           </div>
+
+//           <input
+//             type="submit"
+//             value="Register"
+//             className="bg-purple-500 px-4 py-3 mt-2 cursor-pointer text-md w-full hover:bg-purple-600 rounded text-white"
+//             onClick={() => handleRegister}
+//           />
+//         </form>
+
+//         <p className="mt-10">
+//           Already have an account?{" "}
+//           <Link to="/signin" className="text-purple-600">
+//             Login here
+//           </Link>
+//         </p>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
-    return (
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-            <img src="/login.png" alt="" className="hidden lg:block" />
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-            <div className="flex flex-col h-screen p-4 items-center justify-center border-l-2 border-gray-300">
-                <h4 className="text-gray-600 text-3xl font-semibold mb-10">Create an Account</h4>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-                <form>
-                    <div>
-                        <p className="text-lg font-medium mb-2">Your Name</p>
-                        <input type="text" placeholder="Enter your email..." className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3" />
-                    </div>
-                    <div className="my-4">
-                        <p className="text-lg font-medium mb-2">Your Email</p>
-                        <input type="text" placeholder="Enter your name..." className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3" />
-                    </div>
-                    <div className="mb-6">
-                        <p className="text-lg font-medium mb-2">Your Password</p>
-                        <input type="password" placeholder="Enter your email..." className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3" />
-                    </div>
+  const handleRegister = async (e) => {
+    e.preventDefault();
 
-                    <input type="submit" value="Register" className="bg-purple-500 px-4 py-3 mt-2 cursor-pointer text-md w-full hover:bg-purple-600 rounded text-white" />
-                </form>
+    try {
+      const response = await fetch("https://period-tracker-web-app.onrender.com/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
 
-                <p className="mt-10">Already have an account? <Link to="/signin" className="text-purple-600">Login here</Link></p>
-            </div>
-        </div>
-    )
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("Registration successful:", data.user);
+        setTimeout(() => {
+          navigate("/signin");
+        }, 3000);
+      } else {
+        console.log(data.message);
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
+    }
+  };
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-2">
+      <img src="/login.png" alt="" className="hidden lg:block" />
+
+      <div className="flex flex-col h-screen p-4 items-center justify-center border-l-2 border-gray-300">
+        <h4 className="text-gray-600 text-3xl font-semibold mb-10">
+          Create an Account
+        </h4>
+
+        <form onSubmit={handleRegister}>
+          <div>
+            <p className="text-lg font-medium mb-2">Your Name</p>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              placeholder="Enter your name..."
+              className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="my-4">
+            <p className="text-lg font-medium mb-2">Your Email</p>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              placeholder="Enter your email..."
+              className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <p className="text-lg font-medium mb-2">Your Password</p>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              placeholder="Enter your password..."
+              className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3"
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="bg-purple-500 px-4 py-3 mt-2 cursor-pointer text-md w-full hover:bg-purple-600 rounded text-white"
+          >
+            Register
+          </button>
+        </form>
+
+        <p className="mt-10">
+          Already have an account?{" "}
+          <Link to="/signin" className="text-purple-600">
+            Login here
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
 }

@@ -6,7 +6,7 @@ import { CgProfile } from "react-icons/cg";
 
 export default function Sidebar() {
     return (
-        <div className="w-[280px] h-screen fixed left-0 bg-blue-950 text-gray-200 flex flex-col pt-20">
+        <div className="w-[280px] h-screen fixed left-0 bg-[#26134d] text-gray-200 flex flex-col pt-20">
             <h3 className="ml-10 text-2xl font-medium">Dashboard</h3>
 
             <div className="links mt-10 flex flex-col ml-10 gap-6">
