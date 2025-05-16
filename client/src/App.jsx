@@ -9,7 +9,7 @@ import Profile from './pages/Profile'
 import PeriodLogging from './pages/PeriodLogging'
 import LogDetails from './pages/LogDetails'
 import LogHistory from './pages/LogHistory'
-import MyLog from './pages/myLog'
+import MyLogPage from './pages/MyLogPage'
 import PageNotFound from './pages/PageNotFound'
 import Navbar from './components/Navbar'
 import './App.css'
@@ -40,7 +40,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/period-log" element={<PeriodLogging />} />
-          <Route path="/logs" element={<MyLog />} />
+          <Route path="/logs" element={<MyLogPage />} />
           <Route path="/log-history" element={<LogHistory />} />
           <Route path="/log/:id" element={<LogDetails />} />
           <Route path="/*" element={<PageNotFound />} />
