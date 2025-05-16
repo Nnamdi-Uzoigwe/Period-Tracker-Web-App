@@ -4,53 +4,56 @@ import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 
 export default function Signin() {
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  })
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleLogin = async (e) => {
-    setLoading(true)
-    e.preventDefault()
+    setLoading(true);
+    e.preventDefault();
 
     try {
-      const response = await fetch("https://period-tracker-web-app.onrender.com/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://period-tracker-web-app.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const data = await response.json();
 
       if (response.ok) {
-        sessionStorage.setItem("token", data.token); 
+        sessionStorage.setItem("token", data.token);
         toast.success("Login Successful!", {
-            position: "top-center",
-            autoClose: 2000,
-        })
+          position: "top-center",
+          autoClose: 2000,
+        });
         setTimeout(() => {
-            navigate("/dashboard")
-        }, 3000)
+          navigate("/dashboard");
+        }, 3000);
       } else {
-        toast.error("Incorrect name or password",{
-            position: "top-center",
-            autoClose: 2000,
-        })
+        toast.error("Incorrect name or password", {
+          position: "top-center",
+          autoClose: 2000,
+        });
       }
     } catch (err) {
       console.error("Login error:", err);
     } finally {
-        setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -87,9 +90,16 @@ export default function Signin() {
 
           <button
             className="mt-3 bg-purple-500 px-4 py-3 cursor-pointer text-md flex items-center justify-center w-full hover:bg-purple-600 rounded text-white"
-            onClick={handleLogin} 
+            onClick={handleLogin}
           >
-                {loading ? <span className="flex gap-2">Logging in<Spinner /></span> : <span>Login</span>}
+            {loading ? (
+              <span className="flex gap-2">
+                Logging in
+                <Spinner />
+              </span>
+            ) : (
+              <span>Login</span>
+            )}
           </button>
         </form>
 

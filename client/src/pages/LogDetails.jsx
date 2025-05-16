@@ -1,5 +1,5 @@
 export default function LogDetails() {
     return (
-        <div>Log Details</div>
+        <div className="mt-[100px] min-h-screen">Log Details</div>
     )
 }
