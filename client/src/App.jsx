@@ -5,12 +5,15 @@ import Contact from './pages/Contact'
 import Signin from './pages/Signin'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
-import Profile from './pages/Profile'
-import PeriodLogging from './pages/PeriodLogging'
-import LogDetails from './pages/LogDetails'
-import LogHistory from './pages/LogHistory'
-import MyLogPage from './pages/MyLogPage'
+import Profile from './sections/Dashboard/Profile'
+import PeriodLogging from './sections/Dashboard/PeriodLogging'
+import LogDetails from './sections/Dashboard/LogDetails'
+import LogHistory from './sections/Dashboard/LogHistory'
+import MyLogPage from './sections/Dashboard/MyLogPage'
+import Prediction from './sections/Dashboard/Prediction'
 import PageNotFound from './pages/PageNotFound'
+import ProtectedRoute from './components/ProtectedRoute'
+import ScrollToTop from './components/ScrollToTop'
 import Navbar from './components/Navbar'
 import './App.css'
 import Footer from './components/Footer'
@@ -18,17 +21,21 @@ import { ToastContainer } from "react-toastify"
 function App() {
   const location = useLocation()
 
-  const noFooterRoutes = ['/signin', '/register', '/dashboard'];
+   const noFooterRoutes = ['/signin', '/register', '/dashboard', '/period-log', '/logs', '/prediction', '/log-history', '/log/:id', '/profile'];
 
   return (
     <div>
             {location.pathname !== '/dashboard' 
               && location.pathname !== '/signin' 
-              && location.pathname !== '/register' &&
-              
+              && location.pathname !== '/register'
+              && location.pathname !== '/period-log'
+              && location.pathname !== '/logs'
+              && location.pathname !== '/prediction'
+              && location.pathname !== '/log-history'
+              && location.pathname !== '/log/:id' 
+              && location.pathname !== '/profile' &&
               <Navbar />
             }
-
 
       <div>
         <Routes>
@@ -37,12 +44,15 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/period-log" element={<PeriodLogging />} />
-          <Route path="/logs" element={<MyLogPage />} />
-          <Route path="/log-history" element={<LogHistory />} />
-          <Route path="/log/:id" element={<LogDetails />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/period-log" element={<PeriodLogging />} />
+            <Route path="/logs" element={<MyLogPage />} />
+            <Route path="/prediction" element={<Prediction />} />
+            <Route path="/log-history" element={<LogHistory />} />
+            <Route path="/log/:id" element={<LogDetails />} />
+          </Route>
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </div>
@@ -54,6 +64,7 @@ function App() {
 function AppWrapper() {
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <App />
       <ToastContainer />
     </BrowserRouter>

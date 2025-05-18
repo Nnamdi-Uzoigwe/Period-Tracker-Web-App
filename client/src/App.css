@@ -10,7 +10,7 @@
   padding: 20px;
   font-family: 'Arial', sans-serif;
 }
-
+/* 
 .calendar-container {
   margin-bottom: 30px;
 }
@@ -115,4 +115,89 @@ textarea {
 
 .cancel-btn:hover {
   background-color: #e0e0e0;
+} */
+
+/* .fertile-day {
+  background-color: #fca5a5 !important;
+  border-radius: 50%;
+}
+
+.ovulation-day {
+  background-color: #fdba74 !important; 
+  border-radius: 50%;
+}
+
+.period-day {
+  background-color: #c4b5fd !important;
+  border-radius: 50%;
+}
+
+.react-calendar {
+  border: none !important;
+  font-family: inherit;
+  width: 100%;
+}
+
+.react-calendar__tile--now {
+  background: #e2e8f0 !important; 
+} */
+
+.react-datepicker {
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-family: inherit;
+}
+
+.react-datepicker__day--selected {
+  background-color: #8b5cf6 !important; /* Purple */
+}
+
+.react-datepicker__header {
+  background-color: white !important;
+  border-bottom: none !important;
+}
+
+/* Add to your CSS file */
+/* .day-cell {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.day-cell:hover {
+  transform: scale(1.05);
+} */
+
+/* Current day styling */
+.react-datepicker__day--selected {
+  background-color: #8b5cf6 !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+/* Today's date */
+.react-datepicker__day--today {
+  font-weight: bold;
+  border: 2px solid #94a3b8;
+}
+
+.custom-calendar {
+  width: 100% !important;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.day-cell {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  transition: background-color 0.2s ease-in-out;
 }

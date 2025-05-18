@@ -1,5 +1,5 @@
 import Sidebar from "../components/Sidebar";
-import PeriodLogging from "./PeriodLogging";
+import PeriodLogging from "../sections/Dashboard/PeriodLogging";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 

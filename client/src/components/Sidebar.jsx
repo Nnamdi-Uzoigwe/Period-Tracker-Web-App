@@ -3,7 +3,7 @@ import { MdHome } from "react-icons/md";
 import { TbReport } from "react-icons/tb"
 import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
-import { FaTimes } from "react-icons/fa"; 
+import { FaHistory, FaTimes } from "react-icons/fa"; 
 
 
 export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
@@ -12,22 +12,27 @@ export default function Sidebar({ isSidebarOpen, toggleSidebar }) {
             <h3 className="ml-10 text-2xl font-medium">Dashboard</h3>
 
             <div className="links mt-10 flex flex-col ml-10 gap-6">
-                <Link className="flex items-center gap-2 text-lg">
+                <Link to="/" className="flex items-center gap-2 text-lg">
                     <MdHome />
                     <span>Home</span>
                 </Link>
 
-                <Link className="flex items-center gap-2 text-lg">
+                <Link to="/period-log" className="flex items-center gap-2 text-lg">
                     <TbReport />
                     <span>Log a Period</span>
                 </Link>
                  
-                <Link className="flex items-center gap-2 text-lg">
+                <Link to="/logs" className="flex items-center gap-2 text-lg">
                     <IoMdLogIn />
                     <span>My Logs</span>
                 </Link>
 
-                <Link className="flex items-center gap-2 text-lg">
+                <Link to="/log-history" className="flex items-center gap-2 text-lg">
+                    <FaHistory />
+                    <span>Log History</span>
+                </Link>
+
+                <Link to="/profile" className="flex items-center gap-2 text-lg">
                     <CgProfile />
                     <span>My Profile</span>
                 </Link>
