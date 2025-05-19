@@ -1,25 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Sidebar from "../../components/Sidebar";
-import { FaBars } from "react-icons/fa6";
+import DashboardLayout from "../../layouts/DashboardLayout";
 
 export default function PeriodLogging() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     startDate: "",
-    endDate: "",
+    // endDate: "",
     cycleLength: "",
     periodLength: "",
     flowIntensity: "medium",
     symptoms: [],
     notes: "",
   });
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -66,7 +60,7 @@ export default function PeriodLogging() {
       // Reset the form after submission
       setFormData({
         startDate: "",
-        endDate: "",
+        // endDate: "",
         cycleLength: "",
         periodLength: "",
         flowIntensity: "medium",
@@ -86,35 +80,12 @@ export default function PeriodLogging() {
   };
 
   return (
-    <div className="flex min-h-screen">
-      <div
-        className={`${
-          isSidebarOpen ? "block" : "hidden"
-        } lg:block w-64 fixed lg:relative z-50`}
-      >
-        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      </div>
-
-      {/* Overlay for mobile */}
-      {isSidebarOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
-          onClick={toggleSidebar}
-        />
-      )}
-
-      <div className="flex flex-col flex-1">
-        {/* Mobile Topbar */}
-        <div className="lg:hidden w-full bg-purple-950">
-          <button
-            className="cursor-pointer p-4 text-2xl text-white"
-            onClick={toggleSidebar}
-          >
-            <FaBars />
-          </button>
-        </div>
-        <div className="max-w-2xl mx-auto p-6 w-full bg-white">
-          <h1 className="text-gray-600 text-[30px] font-semibold">Welcome, <span className="text-purple-600">XXX!</span></h1>
+    
+     <DashboardLayout>
+        <div className="px-0 lg:px-60">
+          <h1 className=" text-2xl font-semibold text-gray-500">
+            Welcome to Celestia, <span className="text-purple-700">XXX!</span>
+          </h1>
           <h2 className="text-2xl font-bold text-purple-800 mb-4">
             Log Your Period
           </h2>
@@ -140,7 +111,7 @@ export default function PeriodLogging() {
                 required
               />
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label className="block text-gray-700 mb-2">End Date</label>
               <input
                 type="date"
@@ -150,7 +121,7 @@ export default function PeriodLogging() {
                 className="w-full p-2 border-[2px] border-gray-400 rounded"
                 required
               />
-            </div>
+            </div> */}
 
             {/* New: Cycle Length (days between periods) */}
             <div className="mb-4">
@@ -241,13 +212,12 @@ export default function PeriodLogging() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition"
+              className="cursor-pointer w-full bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition"
             >
               Log Period
             </button>
           </form>
         </div>
-      </div>
-    </div>
+    </DashboardLayout>
   );
 }

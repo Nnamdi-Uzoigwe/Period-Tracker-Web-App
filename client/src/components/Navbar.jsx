@@ -21,7 +21,7 @@ export default function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
-        <Link to="/register">Register</Link>
+        <Link to="/signin">Login</Link>
       </div>
 
       <div>
@@ -68,11 +68,11 @@ export default function Navbar() {
               Contact
             </Link>
             <Link
-              to="/register"
+              to="/signin"
               className="hover:text-[#0F766E] transition-colors py-2"
               onClick={() => setIsOpen(false)}
             >
-              Register
+              Login
             </Link>
               <div className="pt-2">
                 {/* {user ? (

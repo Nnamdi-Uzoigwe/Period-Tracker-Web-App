@@ -155,8 +155,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import DatePicker from "react-datepicker";
-import Sidebar from "../../components/Sidebar";
-import { FaBars } from "react-icons/fa";
 import {
   format,
   isWithinInterval,
@@ -164,6 +162,7 @@ import {
   isSameDay,
 } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
+import DashboardLayout from "../../layouts/DashboardLayout";
 
 // Custom day component with background colors
 const HighlightedDay = ({ date, prediction }) => {
@@ -192,7 +191,6 @@ const HighlightedDay = ({ date, prediction }) => {
 };
 
 export default function Prediction() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [prediction, setPrediction] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -227,38 +225,10 @@ export default function Prediction() {
   const cycleStart = new Date(prediction.nextPeriod);
   cycleStart.setDate(cycleStart.getDate() - prediction.cycleLength);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
   return (
-    <div className="flex min-h-screen">
-      <div
-        className={`${
-          isSidebarOpen ? "block" : "hidden"
-        } lg:block w-64 fixed lg:relative z-50`}
-      >
-        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      </div>
+  <DashboardLayout>
 
-      {/* Overlay for mobile */}
-      {isSidebarOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
-          onClick={toggleSidebar}
-        />
-      )}
-      <div className="flex flex-col flex-1">
-        {/* Mobile Topbar */}
-        <div className="lg:hidden w-full bg-purple-950">
-          <button
-            className="cursor-pointer p-4 text-2xl text-white"
-            onClick={toggleSidebar}
-          >
-            <FaBars />
-          </button>
-        </div>
-        <div className="p-6 max-w-2xl mx-auto w-full">
           <h2 className="text-2xl font-bold mb-6 text-purple-600">
             Your Cycle Overview
           </h2>
@@ -347,9 +317,7 @@ export default function Prediction() {
               <div className="absolute right-0 w-1 h-3 -mt-0.5 bg-purple-500 rounded-full" />
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+    </DashboardLayout>
   );
 }
 
