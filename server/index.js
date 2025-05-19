@@ -24,6 +24,7 @@ app.use(cors({
     }
   },
   credentials: true,
+  allowedHeaders: ['Authorization', 'Content-Type']
 }));
 
 app.use(helmet())
