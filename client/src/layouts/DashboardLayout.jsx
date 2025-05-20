@@ -54,7 +54,7 @@ const DashboardLayout = ({ children }) => {
 
       {/* Sidebar - Mobile */}
       <div className={`fixed inset-y-0 left-0 z-50 w-64 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:hidden transition-transform duration-300 ease-in-out bg-[#2f115d] text-white`}>
-        <div className="flex items-center justify-between p-4 border-b border-bg-[#2f115d]">
+        <div className="flex items-center justify-between p-5 border-b border-bg-[#2f115d]">
           <h1 className="text-xl font-bold">Dashboard</h1>
           <button 
             onClick={() => setSidebarOpen(false)}
@@ -81,7 +81,7 @@ const DashboardLayout = ({ children }) => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Mobile Header */}
-        <header className="lg:hidden bg-[#2f115d]  shadow-sm z-30">
+        <header className="lg:hidden bg-[#2f115d] py-2  shadow-sm z-30">
           <div className="flex items-center justify-between px-4 py-3">
             <button
               onClick={() => setSidebarOpen(true)}
