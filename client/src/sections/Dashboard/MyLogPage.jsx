@@ -517,7 +517,7 @@ const MyLogPage = () => {
     const fetchCycleLogs = async () => {
       try {
         console.log(sessionStorage.getItem('token'))
-        const response = await fetch('http://localhost:7000/api/cycles', {
+        const response = await fetch('https://period-tracker-web-app.onrender.com/api/cycles', {
           headers: {
             'Authorization': `Bearer ${sessionStorage.getItem('token')}`
           }

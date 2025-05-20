@@ -37,7 +37,7 @@ export default function PeriodLogging() {
     const token = sessionStorage.getItem("token");
     console.log("formdata:", formData);
     try {
-      const response = await fetch("http://localhost:7000/api/cycles", {
+      const response = await fetch("https://period-tracker-web-app.onrender.com/api/cycles", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

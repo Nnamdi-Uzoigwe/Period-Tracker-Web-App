@@ -69,7 +69,7 @@ const LogDetails = () => {
           throw new Error('Authentication token missing');
         }
 
-        const response = await fetch(`http://localhost:7000/api/cycles/${id}`, {
+        const response = await fetch(`https://period-tracker-web-app.onrender.com/api/cycles/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
