@@ -22,7 +22,7 @@ export default function Contact() {
     setIsLoading(true);
     
     try {
-      const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+      const response = await fetch('https://formspree.io/f/mjkwynzr', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ export default function Contact() {
         )}
 
         <div className="mt-8 text-center text-sm text-gray-500">
-          <p>Or email us directly at: <a href="mailto:support@periodtracker.com" className="text-purple-800 hover:underline">support@celestia4u.com</a></p>
+          <p>Or email us directly at: <a href="mailto:support@periodtracker.com" className="text-purple-800 hover:underline">help@celestiaapp.com</a></p>
         </div>
       </div>
     </div>

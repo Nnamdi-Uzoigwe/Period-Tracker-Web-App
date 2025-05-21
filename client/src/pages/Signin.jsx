@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+import { handleLoginSuccess } from "../components/UserAvatar";
 
 export default function Signin() {
   const [loading, setLoading] = useState(false);
@@ -37,6 +38,10 @@ export default function Signin() {
 
       if (response.ok) {
         sessionStorage.setItem("token", data.token);
+        handleLoginSuccess({
+          email: data.user?.email || formData.email,
+          username: data.user?.username || formData.email.split("@")[0],
+        });
         toast.success("Login Successful!", {
           position: "top-center",
           autoClose: 2000,

@@ -10,7 +10,7 @@ export default function PeriodLogging() {
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
-
+  const newUserName = sessionStorage.getItem('newUserName')
   const [formData, setFormData] = useState({
     startDate: "",
     // endDate: "",
@@ -90,7 +90,7 @@ export default function PeriodLogging() {
      <DashboardLayout>
         <div className="px-0 pb-10 lg:pb-0 lg:px-60">
           <h1 className=" text-2xl font-semibold text-gray-500">
-            Welcome to Celestia, <span className="text-purple-700">XXX!</span>
+            Welcome to Celestia, <span className="text-purple-700">{newUserName}</span>
           </h1>
           <h2 className="text-2xl font-bold text-purple-800 mb-4">
             Log Your Period

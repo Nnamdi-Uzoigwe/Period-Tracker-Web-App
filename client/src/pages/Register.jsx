@@ -36,7 +36,8 @@ export default function Register() {
 
       if (response.ok) {
         console.log("Registration successful:", data.user);
-        toast.success("Login Successful!", {
+        sessionStorage.setItem('newUserName', data.user.name);
+        toast.success("Registration Successful!", {
                     position: "top-center",
                     autoClose: 2000,
         })
