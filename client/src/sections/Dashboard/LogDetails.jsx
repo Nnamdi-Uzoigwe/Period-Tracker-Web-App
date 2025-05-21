@@ -238,15 +238,15 @@ const LogDetails = () => {
 
             {/* Actions */}
             <div className="flex justify-end space-x-4 mt-8">
-              {/* <button
+              <button
                 onClick={() => navigate(`/logs/${id}/edit`)}
-                className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
+                className="px-4 cursor-pointer py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
               >
-                Edit Log
-              </button> */}
+                View in Calendar
+              </button>
               <button
                 onClick={handleDelete}
-                className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+                className="px-4 py-2 cursor-pointer bg-red-600 text-white rounded-md hover:bg-red-700"
               >
                 Delete Log
               </button>

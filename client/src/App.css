@@ -187,11 +187,17 @@ textarea {
   font-weight: bold;
   border: 2px solid #94a3b8;
 }
-
+/* 
 .custom-calendar {
   width: 100% !important;
   max-width: 100%;
   overflow-x: auto;
+} */
+
+.custom-calendar {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
 }
 
 .day-cell {

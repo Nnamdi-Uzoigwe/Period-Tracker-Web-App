@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import DashboardLayout from "../../layouts/DashboardLayout";
 import CycleInfoModal from "../../components/CycleInfoModal";
+import Spinner from "../../components/Spinner";
 
 export default function PeriodLogging() {
   const navigate = useNavigate();
-   const [isOpen, setIsOpen] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
   const newUserName = sessionStorage.getItem('newUserName')
@@ -39,6 +40,7 @@ export default function PeriodLogging() {
   };
 
   const handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
     const token = sessionStorage.getItem("token");
     console.log("formdata:", formData);
@@ -82,6 +84,8 @@ export default function PeriodLogging() {
         position: "top-center",
         autoClose: "2000",
       });
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -221,9 +225,9 @@ export default function PeriodLogging() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="cursor-pointer w-full bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition"
+              className="flex justify-center items-center cursor-pointer w-full bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition"
             >
-              Log Period
+              {isLoading ? <span className="flex gap-2">Logging <Spinner /></span> :  <span>Log Period</span>}
             </button>
           </form>
         </div>
