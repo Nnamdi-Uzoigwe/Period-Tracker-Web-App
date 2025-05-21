@@ -13,8 +13,7 @@ const DashboardLayout = ({ children }) => {
   const navLinks = [
     { to: '/', icon: <MdHome />, text: 'Home' },
     { to: '/period-log', icon: <TbReport />, text: 'Log Period' },
-    { to: '/logs', icon: <IoMdLogIn />, text: 'My Logs' },
-    { to: '/log-history', icon: <FaHistory />, text: 'History' },
+    { to: '/logs', icon: <FaHistory />, text: 'My Logs' },
     { to: '/profile', icon: <CgProfile />, text: 'Profile' },
     { to: '/logout', icon: <IoMdLogOut />, text: 'Logout' },
   ];
@@ -29,7 +28,6 @@ const DashboardLayout = ({ children }) => {
         />
       )}
 
-      {/* Sidebar - Desktop */}
       <div className="hidden lg:flex lg:flex-shrink-0">
         <div className="flex flex-col w-[300px] bg-[#2f115d] text-white border-r border-bg-[#2f115d]">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
@@ -41,7 +39,7 @@ const DashboardLayout = ({ children }) => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="flex items-center px-4 py-3 text-sm font-medium rounded-md hover:border-[1px] hover:border-grey-800 transition-colors"
+                  className="flex items-center px-4 py-3 text-md font-medium transition-colors"
                 >
                   <span className="mr-3 text-lg">{link.icon}</span>
                   {link.text}
@@ -52,7 +50,6 @@ const DashboardLayout = ({ children }) => {
         </div>
       </div>
 
-      {/* Sidebar - Mobile */}
       <div className={`fixed inset-y-0 left-0 z-50 w-64 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:hidden transition-transform duration-300 ease-in-out bg-[#2f115d] text-white`}>
         <div className="flex items-center justify-between p-5 border-b border-bg-[#2f115d]">
           <h1 className="text-xl font-bold">Dashboard</h1>
@@ -69,7 +66,7 @@ const DashboardLayout = ({ children }) => {
               key={link.to}
               to={link.to}
               onClick={() => setSidebarOpen(false)}
-              className="flex items-center px-4 py-3 my-1 text-sm font-medium rounded-md transition-colors"
+              className="flex items-center px-4 py-3 my-1 text-md font-medium rounded-md transition-colors"
             >
               <span className="mr-3 text-lg">{link.icon}</span>
               {link.text}
@@ -78,9 +75,7 @@ const DashboardLayout = ({ children }) => {
         </nav>
       </div>
 
-      {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Mobile Header */}
         <header className="lg:hidden bg-[#2f115d] py-2  shadow-sm z-30">
           <div className="flex items-center justify-between px-4 py-3">
             <button
@@ -90,7 +85,7 @@ const DashboardLayout = ({ children }) => {
               <FaBars className="h-6 w-6" />
             </button>
             <h2 className="text-lg font-medium text-white">Dashboard</h2>
-            <div className="w-6"></div> {/* Spacer for balance */}
+            <div className="w-6"></div> 
           </div>
         </header>
 

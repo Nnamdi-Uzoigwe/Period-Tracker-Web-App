@@ -2,9 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import DashboardLayout from "../../layouts/DashboardLayout";
+import CycleInfoModal from "../../components/CycleInfoModal";
 
 export default function PeriodLogging() {
   const navigate = useNavigate();
+   const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
+
   const [formData, setFormData] = useState({
     startDate: "",
     // endDate: "",
@@ -95,6 +101,9 @@ export default function PeriodLogging() {
               periods and track patterns.
             </p>
           </div>
+
+          <p className="my-4 text-sm font-semibold text-yellow-600">Don't know what period/cycle length is? <em className="text-purple-500 cursor-pointer" onClick={openModal}>Click here</em></p>
+          {isOpen && <CycleInfoModal closeModal={closeModal} />}
 
           <form onSubmit={handleSubmit}>
             {/* Period Dates */}
