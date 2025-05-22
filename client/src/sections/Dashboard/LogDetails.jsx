@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import DashboardLayout from '../../layouts/DashboardLayout';
 import Button from '../../components/Button';
+import { toast } from 'react-toastify';
 
 const LogDetails = () => {
   const { id } = useParams();
@@ -50,17 +51,39 @@ const LogDetails = () => {
 
 
 
-  const handleDelete = async () => {
-    if (window.confirm('Are you sure you want to delete this log?')) {
-      try {
-        console.log('Would delete log:', id);
-        navigate('/log', { state: { message: 'Log deleted successfully' } });
-      } catch (err) {
-        console.error('Delete failed:', err);
-        setError('Failed to delete log');
+ const handleDelete = async () => {
+  if (window.confirm('Are you sure you want to delete this log?')) {
+    try {
+      const token = sessionStorage.getItem('token');
+      const res = await fetch(`https://period-tracker-web-app.onrender.com/api/cycles/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        }
+      });
+
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.message || 'Failed to delete log');
       }
+      toast.success('Log deleted successfully', {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        navigate('/logs');
+      }, 3000)
+    } catch (err) {
+      console.error('Delete failed:', err);
+      toast.error('Failed to delete log', {
+        position: 'top-center',
+        autoClose: 2000,
+      })
+      setError(err.message || 'Failed to delete log');
     }
-  };
+  }
+};
 
   if (loading) {
     return (
@@ -183,7 +206,7 @@ const LogDetails = () => {
             </div>
 
             {/* Actions */}
-            <div className="flex justify-end space-x-4 mt-8">
+            <div className="flex justify-center lg:justify-end space-x-4 mt-8">
               <Button
                 onClick={() => navigate(`/logs/${id}/prediction`)}
                 className="px-4 cursor-pointer py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
