@@ -122,7 +122,7 @@ export default function Footer() {
                   Safety Guides
                 </a>
               </li>
-             
+
               <li>
                 <a
                   href="#"
@@ -173,6 +173,14 @@ export default function Footer() {
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()} Celestia. All rights reserved.
           </p>
+          <div className="text-sm flex flex-col items-center lg:flex-row mb-4 lg:mb-0 gap-0 lg:gap-2">
+            <a target="_blank" href="https://storyset.com/people">
+              People illustrations by Storyset
+            </a>
+            <a target="_blank" href="https://storyset.com/user">
+              User illustrations by Storyset
+            </a>
+          </div>
           <div className="flex space-x-6">
             <a
               href="#"

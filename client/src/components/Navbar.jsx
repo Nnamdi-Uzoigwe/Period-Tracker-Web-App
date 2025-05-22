@@ -1,15 +1,19 @@
 import { IoFlowerSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
+import { isLoggedIn } from "../utils/authUtils";
+import LogoutModal from "./LogoutModal";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  const [showLogoutModal, setShowLogoutModal] = useState(false)
+
   return (
     <div className="fixed top-0 left-0 w-full bg-white opacity-100 lg:opacity-95 py-4 lg:py-6 px-8 lg:px-40 flex z-50 justify-between items-center border-b-[2px] border-gray-300">
       <div className="logo flex gap-[4px] text-2xl items-center">
@@ -21,12 +25,16 @@ export default function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
-        <Link to="/signin">Login</Link>
+        {isLoggedIn() ? (
+          <Link to="#" onClick={() => setShowLogoutModal(true)}>Logout</Link>
+        ) : (
+          <Link to="/signin">Login</Link>
+        )}
       </div>
 
       <div>
         <Link to="/dashboard" className="hidden lg:block">
-          <Button>Get Started</Button>
+          <Button>{isLoggedIn() ? 'Back to Dashboard' : 'Get Started'}</Button>
         </Link>
       </div>
       <div
@@ -67,6 +75,11 @@ export default function Navbar() {
             >
               Contact
             </Link>
+            {isLoggedIn() ? (
+              <Link onClick={() => setShowLogoutModal(true)}>
+                Logout
+              </Link>
+            ) : (
             <Link
               to="/signin"
               className="hover:text-[#0F766E] transition-colors py-2"
@@ -74,23 +87,18 @@ export default function Navbar() {
             >
               Login
             </Link>
+            )}
+            
               <div className="pt-2">
-                {/* {user ? (
-                            <div className="flex justify-center">
-                            <UserAvatar setShowLogoutModal={setShowLogoutModal} />
-                            </div>
-                        ) : (
-                            <Button>
-                            <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>
-                            </Button>
-                        )} */}
                 <Link to="/dashboard" className="">
-                  <Button>Get Started</Button>
+                  <Button>{isLoggedIn() ? 'Back to Dashboard' : 'Get Started'}</Button>
                 </Link>
               </div>
             </div>
           </div>
       )}
+
+      {showLogoutModal && <LogoutModal />}
     </div>
   );
 }

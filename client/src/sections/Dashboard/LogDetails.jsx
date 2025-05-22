@@ -1,58 +1,8 @@
-// import DashboardLayout from "../../layouts/DashboardLayout";
-
-// export default function LogDetails() {
-//   return (
-//     <DashboardLayout>
-//       <div className="max-w-2xl mx-auto p-6 w-full">Log Details</div>
-//     </DashboardLayout>
-//   );
-// }
-
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import DashboardLayout from '../../layouts/DashboardLayout';
-
-// const LogDetail = () => {
-//   const { id } = useParams();
-//   const navigate = useNavigate();
-//   const [log, setLog] = useState(null);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     const fetchLogDetails = async () => {
-//       try {
-//         const token = sessionStorage.getItem('token');
-//         if (!token) {
-//           throw new Error('Authentication required');
-//         }
-
-  //       const response = await fetch(`http://localhost:7000/api/cycles/${id}`, {
-  //         headers: {
-  //           'Authorization': `Bearer ${token}`,
-  //           'Content-Type': 'application/json'
-  //         }
-  //       });
-
-  //       if (!response.ok) {
-  //         const errorData = await response.json();
-  //         throw new Error(errorData.message || 'Failed to fetch log');
-  //       }
-
-  //       const data = await response.json();
-  //       setLog(data);
-  //     } catch (err) {
-  //       console.error('Fetch error:', err);
-  //       setError(err.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchLogDetails();
-  // }, [id]); // Re-fetch when ID changes
-
+import Button from '../../components/Button';
 
 const LogDetails = () => {
   const { id } = useParams();
@@ -76,7 +26,6 @@ const LogDetails = () => {
           }
         });
 
-        // First check if response is OK
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
           throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
@@ -87,8 +36,7 @@ const LogDetails = () => {
       } catch (err) {
         console.error('Fetch error:', err);
         setError(err.message || 'Failed to load log details');
-        
-        // Redirect if unauthorized
+
         if (err.message.includes('401')) {
           navigate('/signin');
         }
@@ -105,9 +53,7 @@ const LogDetails = () => {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this log?')) {
       try {
-        // TODO: Implement actual delete API
         console.log('Would delete log:', id);
-        // await fetch(`/api/cycles/${id}`, { method: 'DELETE' });
         navigate('/log', { state: { message: 'Log deleted successfully' } });
       } catch (err) {
         console.error('Delete failed:', err);
@@ -238,12 +184,12 @@ const LogDetails = () => {
 
             {/* Actions */}
             <div className="flex justify-end space-x-4 mt-8">
-              <button
-                onClick={() => navigate(`/logs/${id}/edit`)}
+              <Button
+                onClick={() => navigate(`/logs/${id}/prediction`)}
                 className="px-4 cursor-pointer py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
               >
-                View in Calendar
-              </button>
+                View Prediction
+              </Button>
               <button
                 onClick={handleDelete}
                 className="px-4 py-2 cursor-pointer bg-red-600 text-white rounded-md hover:bg-red-700"

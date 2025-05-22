@@ -37,7 +37,7 @@ export default function HowItWorks() {
                     <div className="bg-white rounded-lg px-4 py-6 flex flex-col items-center" key={item.id}>
                         <img src={item.imgName} alt="" className="w-[200px] h-[150px]" />
 
-                        <h3 className="text-xl text-gray-700 font-medium my-2">{item.caption}</h3>
+                        <h3 className="text-xl text-center text-gray-700 font-medium my-2">{item.caption}</h3>
                         <p className="text-center text-sm text-gray-600 mb-4">
                             {item.description}
                         </p>

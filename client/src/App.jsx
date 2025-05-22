@@ -97,6 +97,7 @@ import Navbar from './components/Navbar'
 import './App.css'
 import Footer from './components/Footer'
 import { ToastContainer } from "react-toastify"
+import PredictionDetail from './sections/Dashboard/PredictionDetail';
 
 function App() {
   const location = useLocation();
@@ -108,6 +109,7 @@ function App() {
     '/dashboard',
     '/period-log',
     '/logs',
+    '/logs/',
     '/prediction',
     '/log-history',
     '/profile',
@@ -126,6 +128,7 @@ function App() {
     '/dashboard',
     '/period-log',
     '/logs',
+    '/logs/',
     '/prediction',
     '/log-history',
     '/profile',
@@ -153,6 +156,7 @@ function App() {
             <Route path="/period-log" element={<PeriodLogging />} />
             <Route path="/logs" element={<MyLogPage />} />
             <Route path="/prediction" element={<Prediction />} />
+            <Route path="/logs/:id/prediction" element={<PredictionDetail />} />
             <Route path="/log-history" element={<LogHistory />} />
             <Route path="/log/:id" element={<LogDetails />} />
           </Route>
