@@ -18,7 +18,7 @@ export default function HowItWorks() {
             imgName: img2,
             caption: "Log your period date",
             description: "Easily input your last period date and symptoms to personalize your cycle tracking.",
-            button: "Log Perido"
+            button: "Log Period"
         },
         {
             id: 3,
@@ -41,7 +41,7 @@ export default function HowItWorks() {
                         <p className="text-center text-sm text-gray-600 mb-4">
                             {item.description}
                         </p>
-                        <Button><Link to="/dashboard">{item.button}</Link></Button>
+                        <Button><Link to={item.button === "Create" ? "/register": "/dashboard"}>{item.button}</Link></Button>
                     </div>
                 ))}
             </div>
