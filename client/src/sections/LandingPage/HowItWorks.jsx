@@ -11,21 +11,21 @@ export default function HowItWorks() {
             imgName: img1,
             caption: "Create an account",
             description: "Sign up quickly and securely to begin tracking your cycle and symptoms.",
-            button: "Start"
+            button: "Create"
         },
         {
             id: 2,
             imgName: img2,
             caption: "Log your period date",
             description: "Easily input your last period date and symptoms to personalize your cycle tracking.",
-            button: "Start"
+            button: "Log Perido"
         },
         {
             id: 3,
             imgName: img3,
             caption: "Get predictions for your next cycle",
             description: "Smart forecasts for your next period, ovulation, and symptoms—so you're always prepared.",
-            button: "Start"
+            button: "Get Prediction"
         }
     ]
 

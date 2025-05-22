@@ -1,4 +1,5 @@
 import Button from "../../components/Button";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -13,7 +14,7 @@ export default function Hero() {
           mental and reproductive health
         </p>
         <div className="flex justify-center lg:justify-start">
-            <Button>Get Started</Button>
+            <Link to='/dashboard'><Button>Get Started</Button></Link>
         </div>
       </div>
 
