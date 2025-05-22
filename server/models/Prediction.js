@@ -71,14 +71,14 @@ predictionSchema.index({
   fertileEnd: 1 
 });
 
-// 3. Automatic reference validation on save
-predictionSchema.pre('save', async function(next) {
-  if (this.isModified('cycleEntryId')) {
-    const cycleExists = await mongoose.model('CycleEntry').exists({ _id: this.cycleEntryId });
-    if (!cycleExists) throw new Error(`Referenced CycleEntry ${this.cycleEntryId} not found`);
-  }
-  next();
-});
+// // 3. Automatic reference validation on save
+// predictionSchema.pre('save', async function(next) {
+//   if (this.isModified('cycleEntryId')) {
+//     const cycleExists = await mongoose.model('CycleEntry').exists({ _id: this.cycleEntryId });
+//     if (!cycleExists) throw new Error(`Referenced CycleEntry ${this.cycleEntryId} not found`);
+//   }
+//   next();
+// });
 
 // 4. Cascade delete hook (optional)
 predictionSchema.post('findOneAndDelete', async function(doc) {
