@@ -121,8 +121,11 @@ exports.createCycleEntry = async (req, res) => {
     .limit(5)
     .session(session);
 
-    // 4. Calculate prediction data
-    const predictionData = calculatePrediction(new Date(startDate), pastCycles.map(cycle => cycle.cycleLength));
+    // // 4. Calculate prediction data
+    // const predictionData = calculatePrediction(new Date(startDate), pastCycles.map(cycle => cycle.cycleLength));
+    const cycleLengths = pastCycles.length ? pastCycles.map(cycle => cycle.cycleLength): [cycleLength]; 
+
+const predictionData = calculatePrediction(new Date(startDate), cycleLengths);
 
     // 5. Create and save prediction in same transaction
     const prediction = new Prediction({
