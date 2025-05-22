@@ -92,7 +92,7 @@ export default function PeriodLogging() {
   return (
     
      <DashboardLayout>
-        <div className="px-0 pb-10 lg:pb-0 lg:px-60">
+        <div className="px-0 pb-10 lg:pb-0 lg:px-30 xl:px-60">
           <h1 className=" text-2xl font-semibold text-gray-500">
             Welcome to Celestia, <span className="text-purple-700">{newUserName}</span>
           </h1>

@@ -45,7 +45,7 @@ const DashboardLayout = ({ children }) => {
       )}
 
       <div className="hidden lg:flex lg:flex-shrink-0">
-        <div className="flex flex-col w-[300px] bg-[#2f115d] text-white border-r border-bg-[#2f115d]">
+        <div className="flex flex-col w-[250px] xl:w-[300px] bg-[#2f115d] text-white border-r border-bg-[#2f115d]">
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center ml-4 px-4 mb-8">
               <h1 className="text-2xl font-bold">Dashboard</h1>

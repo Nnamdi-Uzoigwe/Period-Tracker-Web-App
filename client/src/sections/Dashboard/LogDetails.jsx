@@ -117,7 +117,7 @@ const LogDetails = () => {
           <h1 className="text-2xl font-bold text-purple-800">Period Log Details</h1>
           <button 
             onClick={() => navigate(-1)}
-            className="flex items-center text-purple-700 cursor-pointer"
+            className="flex items-center text-sm lg:text-lg text-purple-700 cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
@@ -188,7 +188,7 @@ const LogDetails = () => {
                 onClick={() => navigate(`/logs/${id}/prediction`)}
                 className="px-4 cursor-pointer py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
               >
-                View Prediction
+                See Prediction
               </Button>
               <button
                 onClick={handleDelete}
