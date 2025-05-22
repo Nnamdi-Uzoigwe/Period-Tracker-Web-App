@@ -5,6 +5,7 @@ const cors = require("cors")
 const authRoutes = require("./routes/authRoutes")
 const cycleRoutes = require("./routes/cycleRoutes")
 const predictionRoutes = require("./routes/predictionRoutes") 
+const profileRoutes = require("./routes/profileRoutes")
 const mongoose = require("mongoose")
 
 
@@ -33,6 +34,7 @@ app.use(express.json())
 app.use('/api/auth', authRoutes)
 app.use('/api/cycles', cycleRoutes)
 app.use('/api/prediction', predictionRoutes)
+app.use('/api/profile', profileRoutes)
 
 mongoose.connect(process.env.MONGO_DB_URI, {
   useNewUrlParser: true,
