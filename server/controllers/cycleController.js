@@ -97,10 +97,10 @@ exports.createCycleEntry = async (req, res) => {
   try {
     const { startDate, cycleLength, periodLength, symptoms, notes } = req.body;
 
-    // 1. Validate input dates
-    if (new Date(startDate) > new Date()) {
-      throw new Error("Start date cannot be in the future");
-    }
+    // // 1. Validate input dates
+    // if (new Date(startDate) > new Date()) {
+    //   throw new Error("Start date cannot be in the future");
+    // }
 
     // 2. Create new cycle entry
     const newCycle = new CycleEntry({
