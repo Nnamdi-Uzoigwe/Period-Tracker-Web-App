@@ -1,4 +1,3 @@
-// controllers/cycleController.js
 const CycleEntry = require('../models/CycleEntry');
 const Prediction = require('../models/Prediction');
 const mongoose = require('mongoose');
@@ -66,12 +65,10 @@ exports.createCycleEntry = async (req, res) => {
 
     await newCycle.save();
 
-    // Fetch past cycles (including the new one), limit to last 5 for reasonable average
     const pastCycles = await CycleEntry.find({ userId: req.user.userId }).sort({ startDate: -1 }).limit(5);
 
     const cycleLengths = pastCycles.map(cycle => cycle.cycleLength);
 
-    // Now pass array of cycle lengths
     const predictionData = calculatePrediction(new Date(startDate), cycleLengths);
 
     const prediction = new Prediction({
@@ -105,30 +102,6 @@ exports.getUserCycleEntries = async (req, res) => {
   }
 };
 
-
-// exports.getUserCycleEntry = async (req, res) => {
-//   try {
-//     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-//       return res.status(400).json({ message: 'Invalid ID format' });
-//     }
-
-//     const entry = await CycleEntry.findOne({
-//       _id: req.params.id,
-//       user: req.user.userId 
-//     });
-
-//     if (!entry) {
-//       return res.status(404).json({ message: 'Cycle entry not found' });
-//     }
-
-//     // 3. Return the found entry
-//     res.status(200).json(entry);
-//   } catch (err) {
-//     console.error('Error:', err);
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// };
-
 // controllers/cyclesController.js
 exports.getUserCycleEntry = async (req, res) => {
   try {
@@ -140,7 +113,7 @@ exports.getUserCycleEntry = async (req, res) => {
 
     const entry = await CycleEntry.findOne({
       _id: req.params.id,
-      userId: req.user.userId // Ensure user owns this entry
+      userId: req.user.userId 
     }).lean();
 
     if (!entry) {
@@ -160,12 +133,18 @@ exports.getUserCycleEntry = async (req, res) => {
 //delete
 exports.deleteUserCycleEntry = async (req, res) => {
   try {
-    await CycleEntry.deleteOne({ 
+    const result = await CycleEntry.deleteOne({ 
       _id: req.params.id,
-      user: req.user.userId 
+      userId: req.user.userId 
     });
-    res.json({ message: 'Entry deleted' });
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: 'Cycle entry not found or not authorized' });
+    }
+
+    res.json({ message: 'Entry deleted successfully' });
   } catch (err) {
+    console.error('Delete error:', err);
     res.status(500).json({ message: 'Server error' });
   }
 };
