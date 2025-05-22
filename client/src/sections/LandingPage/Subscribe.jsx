@@ -17,7 +17,7 @@ export default function Subscribe() {
                         placeholder="Enter your email..."
                         className="border-2 border-gray-500 p-3 w-[350px] rounded-lg"     
                     />
-                    <button className="cursor-pointer bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 rounded-md w-fit">Submit</button>
+                    <button className="cursor-pointer bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 rounded-md w-full lg:w-fit">Submit</button>
                 </form>
             </div>
         </div>

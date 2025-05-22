@@ -41,7 +41,7 @@ export default function HowItWorks() {
                         <p className="text-center text-sm text-gray-600 mb-4">
                             {item.description}
                         </p>
-                        <Button><Link to={item.button === "Create" ? "/register": "/dashboard"}>{item.button}</Link></Button>
+                        <Button><Link to={item.button === "Create" ? "/register" : "/dashboard"}>{item.button}</Link></Button>
                     </div>
                 ))}
             </div>
