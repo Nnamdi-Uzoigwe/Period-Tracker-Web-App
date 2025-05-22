@@ -1,7 +1,7 @@
 // controllers/predictionController.js
 const CycleEntry = require('../models/CycleEntry');
 const Prediction = require('../models/Prediction');
-
+const mongoose = require("mongoose")
 
 exports.getLatestPrediction = async (req, res) => {
   try {
@@ -31,9 +31,11 @@ exports.getLatestPrediction = async (req, res) => {
 
 exports.getPredictionByCycleId = async (req, res) => {
   const { cycleId } = req.params;
+  
+  const cycleEntryId = new mongoose.Types.ObjectId(cycleId);
 
   try {
-    const prediction = await Prediction.findOne({ cycleEntryId: cycleId });
+    const prediction = await Prediction.findOne({ cycleEntryId });
 
     if (!prediction) {
       return res.status(404).json({ message: 'No prediction found for this cycle log' });

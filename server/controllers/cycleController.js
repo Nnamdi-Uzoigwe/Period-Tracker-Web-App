@@ -50,45 +50,118 @@ const calculatePrediction = (startDate, pastCycleLengths = [], lutealPhaseLength
   };
 };
 
+// exports.createCycleEntry = async (req, res) => {
+//   try {
+//     const { startDate, cycleLength, periodLength, symptoms, notes } = req.body;
+
+//     const newCycle = new CycleEntry({
+//       userId: req.user.userId,
+//       startDate,
+//       cycleLength,
+//       periodLength,
+//       symptoms,
+//       notes,
+//     });
+
+//     await newCycle.save();
+
+//     const pastCycles = await CycleEntry.find({ userId: req.user.userId }).sort({ startDate: -1 }).limit(5);
+
+//     const cycleLengths = pastCycles.map(cycle => cycle.cycleLength);
+
+//     const predictionData = calculatePrediction(new Date(startDate), cycleLengths);
+
+//     const prediction = new Prediction({
+//       cycleEntryId: newCycle._id,
+//       ...predictionData,
+//     });
+
+//     await prediction.save();
+
+//     res.status(201).json({
+//       message: 'Cycle entry and prediction created successfully',
+//       cycle: newCycle,
+//       prediction,
+//     });
+//   } catch (err) {
+//     console.error('Cycle Entry Error:', err);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// };
+
+
 exports.createCycleEntry = async (req, res) => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
+  
   try {
     const { startDate, cycleLength, periodLength, symptoms, notes } = req.body;
 
+    // 1. Validate input dates
+    if (new Date(startDate) > new Date()) {
+      throw new Error("Start date cannot be in the future");
+    }
+
+    // 2. Create new cycle entry
     const newCycle = new CycleEntry({
       userId: req.user.userId,
       startDate,
       cycleLength,
       periodLength,
-      symptoms,
-      notes,
+      symptoms: symptoms || [],
+      notes: notes || "",
     });
 
-    await newCycle.save();
+    // 3. Get past cycles for prediction calculation
+    const pastCycles = await CycleEntry.find({ 
+      userId: req.user.userId,
+      startDate: { $lt: new Date(startDate) } // Only older cycles
+    })
+    .sort({ startDate: -1 })
+    .limit(5)
+    .session(session);
 
-    const pastCycles = await CycleEntry.find({ userId: req.user.userId }).sort({ startDate: -1 }).limit(5);
+    // 4. Calculate prediction data
+    const predictionData = calculatePrediction(new Date(startDate), pastCycles.map(cycle => cycle.cycleLength));
 
-    const cycleLengths = pastCycles.map(cycle => cycle.cycleLength);
-
-    const predictionData = calculatePrediction(new Date(startDate), cycleLengths);
-
+    // 5. Create and save prediction in same transaction
     const prediction = new Prediction({
-      cycleEntryId: newCycle._id,
+      cycleEntryId: newCycle._id, // Explicitly using the new cycle's ID
       ...predictionData,
     });
 
-    await prediction.save();
+    // 6. Save both documents transactionally
+    await newCycle.save({ session });
+    await prediction.save({ session });
+    
+    await session.commitTransaction();
+
+    // 7. Verify the relationship after creation
+    const savedPrediction = await Prediction.findById(prediction._id);
+    if (!savedPrediction || !savedPrediction.cycleEntryId.equals(newCycle._id)) {
+      throw new Error("Prediction-Cycle link verification failed");
+    }
 
     res.status(201).json({
       message: 'Cycle entry and prediction created successfully',
       cycle: newCycle,
-      prediction,
+      prediction: savedPrediction,
     });
+
   } catch (err) {
+    await session.abortTransaction();
     console.error('Cycle Entry Error:', err);
-    res.status(500).json({ message: 'Server error' });
+    
+    // Specific error messages
+    const statusCode = err.message.includes("validation") ? 400 : 500;
+    res.status(statusCode).json({ 
+      message: err.message || 'Server error',
+      errorType: err.name 
+    });
+  } finally {
+    session.endSession();
   }
 };
-
 
 // Function to get all cycle entries for the logged-in user
 exports.getUserCycleEntries = async (req, res) => {
