@@ -36,13 +36,13 @@ const predictionSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'CycleEntry',
     required: true,
-    validate: { // Custom validator to ensure reference exists
-      validator: async function(v) {
-        const doc = await mongoose.model('CycleEntry').exists({ _id: v });
-        return doc;
-      },
-      message: props => `CycleEntry ${props.value} does not exist`
-    }
+  //   validate: { // Custom validator to ensure reference exists
+  //     validator: async function(v) {
+  //       const doc = await mongoose.model('CycleEntry').exists({ _id: v });
+  //       return doc;
+  //     },
+  //     message: props => `CycleEntry ${props.value} does not exist`
+  //   }
   },
   nextPeriod: {
     type: Date,
