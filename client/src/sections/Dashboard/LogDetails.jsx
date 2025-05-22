@@ -188,7 +188,7 @@ const LogDetails = () => {
                 onClick={() => navigate(`/logs/${id}/prediction`)}
                 className="px-4 cursor-pointer py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300"
               >
-                See Prediction
+                Prediction
               </Button>
               <button
                 onClick={handleDelete}
