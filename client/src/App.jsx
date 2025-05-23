@@ -93,6 +93,7 @@ function AppWrapper() {
     <BrowserRouter>
       <ScrollToTop />
       {/* <App /> */}
+      <div>Have you paid up yet?</div>
     </BrowserRouter>
   );
 }
