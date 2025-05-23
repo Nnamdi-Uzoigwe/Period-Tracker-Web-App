@@ -14,7 +14,6 @@ export default function PeriodLogging() {
   const newUserName = sessionStorage.getItem('newUserName')
   const [formData, setFormData] = useState({
     startDate: "",
-    // endDate: "",
     cycleLength: "",
     periodLength: "",
     flowIntensity: "medium",
@@ -43,7 +42,6 @@ export default function PeriodLogging() {
     setIsLoading(true);
     e.preventDefault();
     const token = sessionStorage.getItem("token");
-    console.log("formdata:", formData);
     try {
       const response = await fetch("https://period-tracker-web-app.onrender.com/api/cycles", {
         method: "POST",
@@ -60,15 +58,12 @@ export default function PeriodLogging() {
       }
 
       const result = await response.json();
-      console.log("Success:", result);
       toast.success("Period logged successfully!", {
         position: "top-center",
         autoClose: "2000",
       });
-      // Reset the form after submission
       setFormData({
         startDate: "",
-        // endDate: "",
         cycleLength: "",
         periodLength: "",
         flowIntensity: "medium",
@@ -110,7 +105,6 @@ export default function PeriodLogging() {
           {isOpen && <CycleInfoModal closeModal={closeModal} />}
 
           <form onSubmit={handleSubmit}>
-            {/* Period Dates */}
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
                 Start date of your last period
@@ -124,19 +118,7 @@ export default function PeriodLogging() {
                 required
               />
             </div>
-            {/* <div className="mb-4">
-              <label className="block text-gray-700 mb-2">End Date</label>
-              <input
-                type="date"
-                name="endDate"
-                value={formData.endDate}
-                onChange={handleChange}
-                className="w-full p-2 border-[2px] border-gray-400 rounded"
-                required
-              />
-            </div> */}
-
-            {/* New: Cycle Length (days between periods) */}
+          
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
                 Cycle Length (days between periods)
@@ -153,7 +135,6 @@ export default function PeriodLogging() {
               />
             </div>
 
-            {/* New: Period Length (days of bleeding) */}
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
                 Period Length (days of bleeding)
@@ -170,7 +151,6 @@ export default function PeriodLogging() {
               />
             </div>
 
-            {/* Flow Intensity */}
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Flow Intensity</label>
               <select
@@ -185,7 +165,6 @@ export default function PeriodLogging() {
               </select>
             </div>
 
-            {/* Symptoms (Checkboxes) */}
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Symptoms</label>
               <div className="space-y-2">
@@ -210,7 +189,6 @@ export default function PeriodLogging() {
               </div>
             </div>
 
-            {/* Notes */}
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Notes</label>
               <textarea
@@ -222,7 +200,6 @@ export default function PeriodLogging() {
               />
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               className="flex justify-center items-center cursor-pointer w-full bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700 transition"

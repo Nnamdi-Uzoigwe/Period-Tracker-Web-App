@@ -38,7 +38,6 @@ const UserAvatar = ({setShowLogoutModal}) => {
   return (
     <div className="flex items-center gap-3">
       <div 
-        // onClick={() => setShowLogoutModal(true)}
         className="cursor-pointer h-10 w-10 rounded-full border-2 border-white text-xl bg-red text-white flex items-center justify-center font-medium"
         title={email}
       >

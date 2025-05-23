@@ -3,7 +3,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdHome } from "react-icons/md";
 import { TbReport } from "react-icons/tb";
-import { IoMdLogIn, IoMdLogOut } from "react-icons/io";
+import { IoMdLogOut } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { FaHistory } from "react-icons/fa";
 import UserAvatar from "../components/UserAvatar";
@@ -86,7 +86,6 @@ const DashboardLayout = ({ children }) => {
         } lg:hidden transition-transform duration-300 ease-in-out bg-[#2f115d] text-white`}
       >
         <div className="flex items-center justify-between p-5 border-b border-bg-[#2f115d]">
-          {/* <h1 className="text-xl font-bold">Dashboard</h1> */}
           {user && (
             <div onClick={() => setShowLogoutModal(true)}>
               <UserAvatar />

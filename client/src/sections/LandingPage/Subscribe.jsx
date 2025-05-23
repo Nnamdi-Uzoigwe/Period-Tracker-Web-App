@@ -1,5 +1,3 @@
-import Button from "../../components/Button";
-
 export default function Subscribe() {
     return (
         <div className="px-8 lg:px-40 py-20 bg-gray-100">

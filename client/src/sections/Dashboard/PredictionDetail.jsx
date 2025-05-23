@@ -22,11 +22,10 @@ export default function PredictionDetail() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [monthToShow, setMonthToShow] = useState(new Date());
   const { id } = useParams();
-// https://period-tracker-web-app.onrender.com
+
   const fetchPrediction = async () => {
     try {
       const token = sessionStorage.getItem("token");
-      console.log("Current ID:", id, "Type:", typeof id);
       const response = await fetch(
         `https://period-tracker-web-app.onrender.com/api/prediction/${id}`,
         {

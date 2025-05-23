@@ -14,7 +14,6 @@ const LogDetails = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // const cycleId = log.cycleId;
     const fetchLogDetails = async () => {
       try {
         const token = sessionStorage.getItem("token");
@@ -41,7 +40,6 @@ const LogDetails = () => {
 
         const data = await response.json();
         setLog(data);
-        console.log(data)
       } catch (err) {
         console.error("Fetch error:", err);
         setError(err.message || "Failed to load log details");
@@ -136,7 +134,6 @@ const LogDetails = () => {
     );
   }
 
-  // Calculate derived dates
   const startDate = new Date(log.startDate);
   const endDate = new Date(log.endDate);
   const cycleEndDate = new Date(startDate);
@@ -171,7 +168,6 @@ const LogDetails = () => {
 
         <div className="bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-6">
-            {/* Date Information */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="border-b pb-4">
                 <h2 className="text-lg font-semibold text-purple-800 mb-2">
@@ -207,7 +203,6 @@ const LogDetails = () => {
               </div>
             </div>
 
-            {/* Symptoms */}
             {log.symptoms?.length > 0 && (
               <div className="mb-6">
                 <h2 className="text-lg font-semibold text-purple-800 mb-2">
@@ -226,7 +221,6 @@ const LogDetails = () => {
               </div>
             )}
 
-            {/* Notes */}
             {log.notes && (
               <div className="mb-6">
                 <h2 className="text-lg font-semibold text-gray-700 mb-2">
@@ -236,15 +230,12 @@ const LogDetails = () => {
               </div>
             )}
 
-            {/* Meta Information */}
             <div className="text-sm text-gray-500 mt-6 pt-4 border-t">
               <p>
                 Logged on{" "}
                 {format(new Date(log.createdAt), "MMMM do, yyyy 'at' h:mm a")}
               </p>
             </div>
-
-            {/* Actions */}
             <div className="flex justify-center lg:justify-end space-x-4 mt-8">
               <Link to={`/prediction/${log._id}`}>
                 <Button className="px-4 cursor-pointer py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300">

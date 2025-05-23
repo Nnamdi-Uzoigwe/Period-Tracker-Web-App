@@ -1,8 +1,6 @@
-
 export default function CycleInfoModal({ closeModal }) {
   return (
     <div className="fixed inset-0 z-50">
-      {/* Semi-transparent backdrop that blocks content underneath */}
       <div 
         className="absolute inset-0 bg-black opacity-70"
         onClick={closeModal}
@@ -14,7 +12,6 @@ export default function CycleInfoModal({ closeModal }) {
           className="bg-white h-[350px] lg:h-auto overflow-y-scroll lg:overflow-y-hidden rounded-lg shadow-xl w-full max-w-md mx-4 p-6"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Header with Close Button */}
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-purple-800">
               Menstrual Cycle Information
@@ -26,8 +23,6 @@ export default function CycleInfoModal({ closeModal }) {
               &times;
             </button>
           </div>
-
-          {/* Cycle Length Info */}
           <div className="mb-5 pb-5 border-b border-gray-200">
             <h3 className="font-semibold text-purple-800 mb-2">Cycle Length</h3>
             <p className="text-gray-600 text-sm mb-2">
@@ -39,8 +34,6 @@ export default function CycleInfoModal({ closeModal }) {
               began on June 29, your cycle length would be 28 days.
             </div>
           </div>
-
-          {/* Period Length Info */}
           <div className="mb-5 pb-5 border-b border-gray-200">
             <h3 className="font-semibold text-purple-800 mb-2">Period Length</h3>
             <p className="text-gray-600 text-sm mb-2">
@@ -51,8 +44,6 @@ export default function CycleInfoModal({ closeModal }) {
               would be 5 days.
             </div>
           </div>
-
-          {/* Flow Intensity Info */}
           <div className="mb-2">
             <h3 className="font-semibold text-purple-800 mb-2">Flow Intensity</h3>
             <p className="text-gray-600 text-sm mb-2">

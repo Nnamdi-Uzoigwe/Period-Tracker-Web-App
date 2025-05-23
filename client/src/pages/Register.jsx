@@ -35,7 +35,6 @@ export default function Register() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log("Registration successful:", data.user);
         sessionStorage.setItem('newUserName', data.user.name);
         toast.success("Registration Successful!", {
                     position: "top-center",
