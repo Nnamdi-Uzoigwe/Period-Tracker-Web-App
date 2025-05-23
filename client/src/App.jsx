@@ -93,7 +93,7 @@ function AppWrapper() {
     <BrowserRouter>
       <ScrollToTop />
       {/* <App /> */}
-      <div>Have you paid up yet?</div>
+      <div className='flex items-center justify-center h-screen'>Have you paid up yet?😿</div>
     </BrowserRouter>
   );
 }
