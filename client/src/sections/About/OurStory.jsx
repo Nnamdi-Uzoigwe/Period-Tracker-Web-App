@@ -34,7 +34,7 @@ export default function OurStory() {
             What started as a dorm-room prototype caught fire. With feedback
             from classmates (and a lot of beta-testing pizza), Chinenye teamed up
             with a campus
-            health advisor, to refine the algorithm.
+            health advisor to refine the algorithm.
           </span>
           Today, what began as an undergrad project helps{" "}
           <span className="text-purple-800 font-bold">1,000+ users</span> track
