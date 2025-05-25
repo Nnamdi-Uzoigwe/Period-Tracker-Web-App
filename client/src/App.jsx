@@ -19,6 +19,8 @@ import './App.css'
 import Footer from './components/Footer'
 import { ToastContainer } from "react-toastify"
 import PredictionDetail from './sections/Dashboard/PredictionDetail';
+import VerifyOtpPage from './pages/VerifyOtpPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 
 function App() {
   const location = useLocation();
@@ -26,6 +28,8 @@ function App() {
   const noFooterRoutes = [
     '/signin',
     '/register',
+    '/verify-otp',
+    '/reset-password',
     '/dashboard',
     '/period-log',
     '/logs',
@@ -43,6 +47,8 @@ function App() {
   const noNavbarRoutes = [
     '/signin',
     '/register',
+    '/verify-otp',
+    '/reset-password',
     '/dashboard',
     '/period-log',
     '/logs',
@@ -68,6 +74,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/verify-otp" element={<VerifyOtpPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />  
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />

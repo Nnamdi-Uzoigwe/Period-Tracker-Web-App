@@ -6,6 +6,7 @@ import { handleLoginSuccess } from "../components/UserAvatar";
 
 export default function Signin() {
   const [loading, setLoading] = useState(false);
+  const [otpLoading, setOtpLoading] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -50,15 +51,64 @@ export default function Signin() {
           navigate("/dashboard");
         }, 3000);
       } else {
-        toast.error("Incorrect name or password", {
+        toast.error("Incorrect email or password", {
           position: "top-center",
           autoClose: 2000,
         });
       }
     } catch (err) {
       console.error("Login error:", err);
+      toast.error("An error occurred during login", {
+        position: "top-center",
+        autoClose: 2000,
+      });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!formData.email) {
+      toast.error("Please enter your email first", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      return;
+    }
+
+    setOtpLoading(true);
+    try {
+      const response = await fetch(
+        "http://localhost:7000/api/auth/send-reset-otp",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: formData.email }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success("OTP sent to your email!", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+        navigate(`/verify-otp?email=${encodeURIComponent(formData.email)}`);
+      } else {
+        toast.error(data.message || "Failed to send OTP", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      }
+    } catch (err) {
+      console.error("OTP sending error:", err);
+      toast.error("Failed to send OTP", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+    } finally {
+      setOtpLoading(false);
     }
   };
 
@@ -69,7 +119,7 @@ export default function Signin() {
       <div className="flex flex-col h-screen p-4 items-center justify-center border-l-2 border-gray-300">
         <h4 className="text-gray-600 text-3xl font-semibold mb-10">Sign in</h4>
 
-        <form>
+        <form className="w-full max-w-[400px]">
           <div>
             <p className="text-lg font-medium mb-2">Your Email</p>
             <input
@@ -77,7 +127,7 @@ export default function Signin() {
               name="email"
               value={formData.email}
               placeholder="Enter your email..."
-              className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3"
+              className="border-[2px] border-gray-400 rounded w-full p-3"
               onChange={handleChange}
             />
           </div>
@@ -87,8 +137,8 @@ export default function Signin() {
               type="password"
               name="password"
               value={formData.password}
-              placeholder="Enter your email..."
-              className="border-[2px] border-gray-400 rounded w-[300px] lg:w-[400px] p-3"
+              placeholder="Enter your password..."
+              className="border-[2px] border-gray-400 rounded w-full p-3"
               onChange={handleChange}
             />
           </div>
@@ -96,6 +146,7 @@ export default function Signin() {
           <button
             className="mt-3 bg-purple-500 px-4 py-3 cursor-pointer text-md flex items-center justify-center w-full hover:bg-purple-600 rounded text-white"
             onClick={handleLogin}
+            disabled={loading}
           >
             {loading ? (
               <span className="flex gap-2">
@@ -106,6 +157,23 @@ export default function Signin() {
               <span>Login</span>
             )}
           </button>
+
+          <div className="mt-4 text-center">
+            <button
+              type="button"
+              onClick={handleForgotPassword}
+              disabled={otpLoading}
+              className="text-purple-600 hover:text-purple-800 text-sm font-medium"
+            >
+              {otpLoading ? (
+                <span className="flex items-center justify-center gap-2">
+                  Sending OTP <Spinner size="small" />
+                </span>
+              ) : (
+                "Forgot Password?"
+              )}
+            </button>
+          </div>
         </form>
 
         <p className="mt-10">
