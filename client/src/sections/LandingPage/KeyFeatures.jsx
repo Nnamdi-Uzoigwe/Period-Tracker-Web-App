@@ -35,7 +35,7 @@ export default function KeyFeatures() {
             <h3 className="text-[30px] font-semibold mb-10 text-gray-700 underline text-center lg:text-left">Key Features</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-4">
                 {featuresArray.map((item) => (
-                    <div className="bg-gray-200 flex flex-col p-4 items-center justify-center h-[300px] w-[300px] clip-hexagon">
+                    <div key={item.id} className="bg-gray-200 flex flex-col p-4 items-center justify-center h-[300px] w-[300px] clip-hexagon">
                         <div>{item.iconName}</div>
                         <h3 className="text-xl text-[#6835ba] font-medium my-2">{item.caption}</h3>
                         <p className="text-center text-sm text-gray-600 mb-4 w-[60%] font-semibold">

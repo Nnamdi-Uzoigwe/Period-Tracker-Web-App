@@ -79,7 +79,7 @@ export default function Signin() {
     setOtpLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:7000/api/auth/send-reset-otp",
+        "https://period-tracker-web-app.onrender.com/api/auth/send-reset-otp",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
