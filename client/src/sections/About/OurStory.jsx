@@ -15,7 +15,7 @@ export default function OurStory() {
             —one that grew from late-night coding sessions into a mission to
             revolutionize period care.
           </span>
-          Our founder, <span className="font-semibold text-gray-800">Alex</span>,
+          Our founder, <span className="font-semibold text-gray-800">Chinenye Edwin</span>,
           was tired of juggling clunky period trackers while surviving
           university life. Between exams and erratic cycles, existing apps felt{" "}
           <span className="bg-purple-100 px-1 rounded">
@@ -25,14 +25,14 @@ export default function OurStory() {
           <span className="italic text-gray-600">
             "build something that solves a real problem,"
           </span>{" "}
-          Alex knew exactly what to create:{" "}
+          Chinenye knew exactly what to create:{" "}
           <span className="font-medium text-purple-600">
             a privacy-first period tracker
           </span>{" "}
           that actually worked.
           <span className="my-4 block border-l-4 border-purple-300 pl-4 text-gray-600">
             What started as a dorm-room prototype caught fire. With feedback
-            from classmates (and a lot of beta-testing pizza), Alex teamed up
+            from classmates (and a lot of beta-testing pizza), Chinenye teamed up
             with <span className="font-semibold">Dr. Maya Chen</span>, a campus
             health advisor, to refine the algorithm.
           </span>

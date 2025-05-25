@@ -117,7 +117,7 @@ export default function Signin() {
       <img src="/login.png" alt="" className="hidden lg:block" />
 
       <div className="flex flex-col h-screen p-4 items-center justify-center border-l-2 border-gray-300">
-        <h4 className="text-gray-600 text-3xl font-semibold mb-10">Sign in</h4>
+        <h4 className="text-purple-950 text-3xl font-semibold mb-10">Sign in</h4>
 
         <form className="w-full max-w-[400px]">
           <div>
@@ -144,7 +144,7 @@ export default function Signin() {
           </div>
 
           <button
-            className="mt-3 bg-purple-500 px-4 py-3 cursor-pointer text-md flex items-center justify-center w-full hover:bg-purple-600 rounded text-white"
+            className="mt-8 bg-purple-500 px-4 py-3 cursor-pointer text-md flex items-center justify-center w-full hover:bg-purple-600 rounded text-white"
             onClick={handleLogin}
             disabled={loading}
           >
@@ -157,13 +157,13 @@ export default function Signin() {
               <span>Login</span>
             )}
           </button>
-
-          <div className="mt-4 text-center">
+        </form>
+        <div className="mt-4 flex flex-col lg:flex-row items-center justify-between w-full max-w-[400px]">
             <button
               type="button"
               onClick={handleForgotPassword}
               disabled={otpLoading}
-              className="text-purple-600 hover:text-purple-800 text-sm font-medium"
+              className="cursor-pointer text-purple-600 hover:text-purple-800 text-[15px] font-medium"
             >
               {otpLoading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -173,15 +173,13 @@ export default function Signin() {
                 "Forgot Password?"
               )}
             </button>
-          </div>
-        </form>
-
-        <p className="mt-10">
-          Don't have an account?{" "}
-          <Link to="/register" className="text-purple-600 block lg:inline">
-            Create an account here
-          </Link>
-        </p>
+          <p className="text-sm mt-4 lg:mt-0">
+            Don't have an account?{" "}
+            <Link to="/register" className="text-purple-600 block">
+              Create an account here
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ export default function Register() {
       <img src="/login.png" alt="" className="hidden lg:block" />
 
       <div className="flex flex-col h-screen p-4 items-center justify-center border-l-2 border-gray-300">
-        <h4 className="text-gray-600 text-3xl font-semibold mb-10">
+        <h4 className="text-purple-950 text-3xl font-semibold mb-10">
           Create an Account
         </h4>
 
