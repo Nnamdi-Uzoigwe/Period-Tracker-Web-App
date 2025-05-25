@@ -33,7 +33,7 @@ export default function OurStory() {
           <span className="my-4 block border-l-4 border-purple-300 pl-4 text-gray-600">
             What started as a dorm-room prototype caught fire. With feedback
             from classmates (and a lot of beta-testing pizza), Chinenye teamed up
-            with <span className="font-semibold">Dr. Maya Chen</span>, a campus
+            with a campus
             health advisor, to refine the algorithm.
           </span>
           Today, what began as an undergrad project helps{" "}
