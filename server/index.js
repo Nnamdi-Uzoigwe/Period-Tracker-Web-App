@@ -27,6 +27,7 @@ app.use(cors({
   credentials: true,
   allowedHeaders: ['Authorization', 'Content-Type']
 }));
+app.options('*', cors())
 
 app.use(helmet())
 app.use(express.json())
