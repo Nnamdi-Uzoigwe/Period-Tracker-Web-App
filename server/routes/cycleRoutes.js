@@ -7,7 +7,6 @@ const {
   createCycleEntry,
   getUserCycleEntries,
   getUserCycleEntry,
-  deleteUserEntry,
   deleteUserCycleEntry,
 } = require('../controllers/cycleController');
 
